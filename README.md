@@ -52,4 +52,18 @@ Just click and download the last 12 months.
 
 ### How is the data organized ?
 
-The data is organized in monhtly csv files. The most recent twelve months of data (March 2021 - March 2022) were used for this project. The files consist of 13 columns containing information related to ride_id, bike_type, ride_time, start_at, end_at, start location, end location, and geographic coordinates.
+The data is organized in monhtly csv files. The most recent twelve months of data (March 2021 - March 2022) were used for this project. 
+The files consist of 13 columns containing information related :
+ride_type
+start_time
+end_time
+from_station_name
+from_station_id
+to_station_name
+to_station_id
+start_lat
+start_lng
+end_lat
+end_lng
+user_type
+date
