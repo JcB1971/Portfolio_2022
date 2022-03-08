@@ -41,3 +41,15 @@ The Cyclistic executive team. This team makes the final decision on the recommen
 
 # 2. Prepare
 
+### Where is the Data located ?
+
+The data is available at this location:
+http://divvy-tripdata.s3.amazonaws.com/index.html
+
+https://github.com/JcB1971/Portfolio_2022/blob/0dd581819f59eea4ba0101148e2ad6682319b24d/Screenshot%20from%202022-03-08%2016-17-00.png
+
+Just click and download the last 12 months.
+
+### How is the data organized ?
+
+The data is organized in monhtly csv files. The most recent twelve months of data (March 2021 - March 2022) were used for this project. The files consist of 13 columns containing information related to ride_id, bike_type, ride_time, start_at, end_at, start location, end location, and geographic coordinates.
