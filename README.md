@@ -140,24 +140,23 @@ https://github.com/JcB1971/Portfolio_2022/blob/main/Screenshot%20from%202022-03-
 ### Data Cleaning
 Duplicate records (based on the RIDE ID field) were removed.
 Code: 
-
+```diff
 all_trips_v2 <- distinct(all_trips, ride_id, .keep_all=TRUE)
+```
 
 Records for trips less than 60 seconds (false starts) or longer than 24 hours were removed. Bikes out longer than 24 hours are considered stolen and the rider is charged for a replacement.
 Code:
-
+```diff
 (all_trips_v2 <- all_trips_v2[!
 (all_trips_v2$ride_length<60 | 
 all_trips_v2$ride_length>86400),])
+```
 
 
-all_trips_v2 <- all_trips_v2[!
-(all_trips_v2$ride_length<60 | 
-all_trips_v2$ride_length>86400),]
 
 Records with missing fields start_station, end_station, start/end lat/long fields were removed.
 Code:
-```diff @@@
+```diff
 all_trips_v2 <- all_trips_v2[!
 (is.na(all_trips_v2$start_station_id) |
 is.na(all_trips_v2$end_station_id) |
@@ -166,6 +165,7 @@ is.na(all_trips_v2$rideable_type) |
 is.na(all_trips_v2$started_at) |
 is.na(all_trips_v2$ended_at) |
 is.na(all_trips_v2$end_lat) |
-is.na(all_trips_v2$end_lng)),] ```
+is.na(all_trips_v2$end_lng)),] 
+```
 
 Records for trips that started or ended at DIVVY CASSETTE REPAIR MOBILE STATION orHUBBARD ST BIKE CHECKING (LBS-WH-TEST) were removed as these are administrative stations.
