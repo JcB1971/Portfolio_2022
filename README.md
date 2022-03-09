@@ -32,7 +32,7 @@ To increase profitability by converting casual riders to annual members via a ta
 ## Business Task 
 
 The analyst has been tasked with answering this question: 
-How do annual members and casual riders use @@Cyclistic bikes differently ? 
+How do annual members and casual riders use Cyclistic bikes differently ? 
 
 ## Stakeholders
 
@@ -157,6 +157,7 @@ all_trips_v2$ride_length>86400),]
 
 Records with missing fields start_station, end_station, start/end lat/long fields were removed.
 Code:
+```diff @@@
 all_trips_v2 <- all_trips_v2[!
 (is.na(all_trips_v2$start_station_id) |
 is.na(all_trips_v2$end_station_id) |
@@ -165,6 +166,6 @@ is.na(all_trips_v2$rideable_type) |
 is.na(all_trips_v2$started_at) |
 is.na(all_trips_v2$ended_at) |
 is.na(all_trips_v2$end_lat) |
-is.na(all_trips_v2$end_lng)),]
+is.na(all_trips_v2$end_lng)),] ```
 
 Records for trips that started or ended at DIVVY CASSETTE REPAIR MOBILE STATION orHUBBARD ST BIKE CHECKING (LBS-WH-TEST) were removed as these are administrative stations.
