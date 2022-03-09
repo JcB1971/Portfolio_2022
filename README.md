@@ -86,6 +86,7 @@ The rideable_type field contains one of three values:
 - Electric bike
 - Classic bike
 - Docked bike
+
 Electic and Classic seem self-explanatory, but what exactly a Docked bike is, is unclear. From a review of the data it  seems that electric bikes were available to both types of users for the entire 12 months period; Classic bikes were available to both groups of users but only from December 2, 2020 to Jly 31, 2021; and Docked bikes were available to members from August 1, 2020 to January 13, 2021 and to casual riders for the entire 12 months. For the purpose of this analysis these rideable types will not be used to segment the data or draw any conclusions about the bike preferences as data collection for this variable is not consistent across the time period analyzed.
 
 ### Latitude and Longitude
@@ -109,10 +110,10 @@ The review of the data revealed several problems:
 - Records for trips starting or ending at an administrative station (repair or teseting station)
 
 Once the initial review was completed, all 12 files were loaded into one data frame calle all_rides. The resulting amalgamated file consisted of 
-Rows 5,601,999
-Col 13
-Character 7
-Numeric 4
-POSIXct 2
+- Rows 5,601,999
+- Col 13
+- Character 7
+- Numeric 4
+- POSIXct 2
 
 %%%%%PICTURE SCREEENSHOT 10-37-29%%%%%
