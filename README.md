@@ -156,7 +156,7 @@ all_trips_v2$ride_length>86400),])
 
 Records with missing fields start_station, end_station, start/end lat/long fields were removed.
 Code:
-```diff
+```diff @@
 all_trips_v2 <- all_trips_v2[!
 (is.na(all_trips_v2$start_station_id) |
 is.na(all_trips_v2$end_station_id) |
