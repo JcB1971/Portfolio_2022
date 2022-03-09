@@ -128,8 +128,18 @@ To allow for more granular analysis of the data  and more insights, several new 
 Another column was created to contain the trip duration (length of each trip). The data for this column was created by calculating the difference in time between the start and end time of the ride. Another version of this column was then created to contain the trip duration in minutes.
 Rename Columns:
 https://github.com/JcB1971/Portfolio_2022/blob/main/Screenshot%20from%202022-03-08%2011-12-02.png
+
 Create Columns:
+https://github.com/JcB1971/Portfolio_2022/blob/main/Screenshot%20from%202022-03-08%2014-52-36.png
 
 
 ### Data Cleaning
 Duplicate records (based on the RIDE ID field) were removed.
+Code: 
+all_trips_v2 <- distinct(all_trips, ride_id, .keep_all=TRUE)
+
+Records for trips less than 60 seconds (false starts) or longer than 24 hours were removed. Bikes out longer than 24 hours are considered stolen and the rider is charged for a replacement.
+Code:
+all_trips_v2 <- all_trips_v2[!
+(all_trips_v2$ride_length<60 | 
+all_trips_v2$ride_length>86400),]
