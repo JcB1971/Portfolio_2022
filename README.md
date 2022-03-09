@@ -116,4 +116,5 @@ Once the initial review was completed, all 12 files were loaded into one data fr
 - Numeric 4
 - POSIXct 2
 
-%%%%%PICTURE SCREEENSHOT 10-37-29%%%%%
+https://github.com/JcB1971/Portfolio_2022/blob/main/Screenshot%20from%202022-03-08%2016-17-00.png
+
