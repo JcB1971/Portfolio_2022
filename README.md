@@ -1,11 +1,11 @@
 # ## Table of contents
-* [Introduction]
-* [1. Ask]
-* [2. Prepare]
-* [3. Process and Clean] 
-* [4. Analyze]
-* [5. Share]
-* [Act]
+* Introduction
+* 1. Ask
+* 2. Prepare
+* 3. Process and Clean 
+* 4. Analyze
+* 5. Share
+* 6. Act
 My Data Analytics Portofolio 2022
 
 
