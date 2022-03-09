@@ -54,16 +54,37 @@ Just click and download the last 12 months.
 
 The data is organized in monhtly csv files. The most recent twelve months of data (March 2021 - March 2022) were used for this project. 
 The files consist of 13 columns containing information related :
-ride_type
-start_time
-end_time
-from_station_name
-from_station_id
-to_station_name
-to_station_id
-start_lat
-start_lng
-end_lat
-end_lng
-user_type
-date
+* ride_type
+* start_time
+* end_time
+* from_station_name
+* from_station_id
+* to_station_name
+* to_station_id
+* start_lat
+* start_lng
+* end_lat
+* end_lng
+* user_type
+* date
+
+### Credibility of the Data
+The data is collected directly by Motivate, Inc., the company that runs the Cyclistic Bike Share program for the city of Chicago. The data is comprehensive in that it consists of data for all the rides taken on the sytem and is not just a sample of the data. The data is current. It is released monthly and, as of March 2022, was current to February 2022. The city of Chicago makes the data availale to the public.
+
+### Licencing, Privacy, Security and Accessibility
+This data is anonymzed as it has been stripped of all identifying information. This ensures privacy, but it limits the extent of the analysis possible. There is not enough data to determine if casual riders are repeat riders or if casual riders are residents of the Chicago area. The data is released under this licence:
+http://www.divvybikes.com/data-licence-agreement
+
+### Ability of data to be used to answer Business Question
+One of the fields in the  data records the type of rider; casual riders pay for individual or daily rides and member riders purchase annual subscription. This information is crucial to be able to determine differences between how the two groups use the bike share program.
+
+### Problems with the data
+Ther are some problems with the data. Most of the problems (duplicate records, missing fields, etc.) can be dealt with by data cleaning, but a couple of issues require futher explanation.
+
+### Rideable_type Field
+The rideable_type field contains one of three values:
+- Electric bike
+- Classic bike
+- Docked bike
+Electic and Classic seem self-explanatory, but what exactly a Docked bike is, is unclear. From a review of the data it  seems that electric bikes were available to both types of users for the entire 12 months period; Classic bikes were available to both groups of users but only from December 2, 2020 to Jly 31, 2021; and Docked bikes were available to members from August 1, 2020 to January 13, 2021 and to casual riders for the entire 12 months. For the purpose of this analysis these rideable types will not be used to segment the data or draw any conclusions about the bike preferences as data collection for this variable is not consistent across the time period analyzed.
+
