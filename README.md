@@ -156,8 +156,8 @@ all_trips_v2$ride_length>86400),])
 
 Records with missing fields start_station, end_station, start/end lat/long fields were removed.
 Code:
-```diff!
-all_trips_v2 <- all_trips_v2[!
+```diff
+all_trips_v3 <- all_trips_v2[!
 (is.na(all_trips_v2$start_station_id) |
 is.na(all_trips_v2$end_station_id) |
 is.na(all_trips_v2$ride_id) |
@@ -169,3 +169,35 @@ is.na(all_trips_v2$end_lng)),]
 ```
 
 Records for trips that started or ended at DIVVY CASSETTE REPAIR MOBILE STATION orHUBBARD ST BIKE CHECKING (LBS-WH-TEST) were removed as these are administrative stations.
+
+```diff 
+all_trips_v3 <- all_trips_v3[!
+(all_trips_v3$start_station_name == "DIVVY CASSETTE REPAIR MOBILE STATION" |
+all_trips_v3$start_station_name == "HUBBARD ST BIKE CHECKING (LBS-WH-TEST)" |
+all_trips_v3$start_station_name == "WATSON TESTING DIVVY" | 
+all_trips_v3$end_station_name == "DIVVY CASSETTE REPAIR MOBILE STATION" |
+all_trips_v3$end_station_name == 'HUSBARD ST BIKE CHECKING (LBS-WH-TEST)" |
+all_trips_v3$end_station_name == "WATSON TESTING DIVVY"),]
+```
+Station names were checked for leading and trailing spaces during the analysis phase and there did not appear to be any.
+Initially the data set contained 4,731,081 records. Once the data was cleaned, 4,101,243 records remained. 13.3% of the records were removed.
+
+# 4. Analyse
+
+Once th edata was cleaned analysis of the data was undertaken in RStudio to determine the following:
+
+- Mean, median, maximum, minimum ride duration (by rider type)
+- Average ride length by day and rider type
+- Count of trips by rider type
+- Count of trips by bicycle type
+- Count of the number of start stations
+
+The cleaned data set was used to create a .csv file that was exported from RStudio and imported into Tableau for further analysis.
+From there we will create visualizations.
+Tableau was used to further analyzing the data and determine:
+- Ride duration
+- Times of the day for rides
+- Days of the week for rides
+- Months of the year of the rides
+- Top 20 start stations by user type
+- Top 20 end stations by user type
