@@ -32,7 +32,7 @@ To increase profitability by converting casual riders to annual members via a ta
 ## Business Task 
 
 The analyst has been tasked with answering this question: 
-How do annual members and casual riders use Cyclistic bikes differently ? 
+How do annual members and casual riders use @@Cyclistic bikes differently ? 
 
 ## Stakeholders
 
@@ -146,9 +146,9 @@ all_trips_v2 <- distinct(all_trips, ride_id, .keep_all=TRUE)
 Records for trips less than 60 seconds (false starts) or longer than 24 hours were removed. Bikes out longer than 24 hours are considered stolen and the rider is charged for a replacement.
 Code:
 
-![#c5f015](all_trips_v2 <- all_trips_v2[!
+(all_trips_v2 <- all_trips_v2[!
 (all_trips_v2$ride_length<60 | 
-all_trips_v2$ride_length>86400),]) `#c5f015`
+all_trips_v2$ride_length>86400),])
 
 
 all_trips_v2 <- all_trips_v2[!
