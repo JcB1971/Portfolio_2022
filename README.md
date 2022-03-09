@@ -141,10 +141,11 @@ all_trips_v2 <- distinct(all_trips, ride_id, .keep_all=TRUE)
 
 Records for trips less than 60 seconds (false starts) or longer than 24 hours were removed. Bikes out longer than 24 hours are considered stolen and the rider is charged for a replacement.
 Code:
+<font color="green">  </font>
 
 all_trips_v2 <- all_trips_v2[!
 (all_trips_v2$ride_length<60 | 
-all_trips_v2$ride_length>86400),]
+all_trips_v2$ride_length>86400),] </font>
 
 Records with missing fields start_station, end_station, start/end lat/long fields were removed.
 Code:
