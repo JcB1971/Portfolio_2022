@@ -1,7 +1,7 @@
 # ## Table of contents
-* [Introduction](#general-info)
-* [1. Ask](#technologies)
-* [2. Prepare](#setup)
+* [Introduction]
+* [1. Ask]
+* [2. Prepare]
 * [3. Process and Clean] 
 * [4. Analyze]
 * [5. Share]
