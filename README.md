@@ -123,3 +123,9 @@ Once the initial review was completed, all 12 files were loaded into one data fr
 
 https://github.com/JcB1971/Portfolio_2022/blob/main/Screenshot%20from%202022-03-08%2016-17-00.png
 
+### Extraction of Data from Existing Fields
+To allow for more granular analysis of the data  and more insights, several new columns were created and populated with data from the started_at column of date and time. These new columns were day, month, year, time and day of the week.
+Another column was created to contain the trip duration (length of each trip). The data for this column was created by calculating the difference in time between the start and end time of the ride. Another version of this column was then created to contain the trip duration in minutes.
+
+### Data Cleaning
+Duplicate records (based on the RIDE ID field) were removed.
