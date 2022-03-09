@@ -88,3 +88,31 @@ The rideable_type field contains one of three values:
 - Docked bike
 Electic and Classic seem self-explanatory, but what exactly a Docked bike is, is unclear. From a review of the data it  seems that electric bikes were available to both types of users for the entire 12 months period; Classic bikes were available to both groups of users but only from December 2, 2020 to Jly 31, 2021; and Docked bikes were available to members from August 1, 2020 to January 13, 2021 and to casual riders for the entire 12 months. For the purpose of this analysis these rideable types will not be used to segment the data or draw any conclusions about the bike preferences as data collection for this variable is not consistent across the time period analyzed.
 
+### Latitude and Longitude
+There are also a challenge with the latitude and longitude coordinates for the stations. 
+Each station is represented by a range of lat/long coordinates. The start/end latitude and longitude seem to indicate the location of a particular bike. Creating a list of popular stations is not difficult, but mapping the stations is more problematic. 
+This was remedied by averaging the lat and long values for the stations before mapping. This resulted in the rides counts for a station matching the ride count for one set of lat/long coordinates.
+
+# 3. Process and Clean
+
+### What tools are we choosing and why ?
+For this project I have chosen to use RStudio Desktop to prepare, clean, and analyze the data. 
+I later on used Tableau to create the visualizations. The data set was too large to be processed in spreadsheets and Rstudio Cloud.
+
+### Review of the Data
+Data was reviewd to get an overall understanding of content of fields, data formats, and to ensure its integrity. The review of the data involved, checking column names across the 12 original files and checking for missing values, trailing white spaces, duplicate records, and other data anomalies.
+
+The review of the data revealed several problems:
+- Duplicate record ID numbers
+- Records with missing start and end stations
+- Records with very short or very long ride durations
+- Records for trips starting or ending at an administrative station (repair or teseting station)
+
+Once the initial review was completed, all 12 files were loaded into one data frame calle all_rides. The resulting amalgamated file consisted of 
+Rows 5,601,999
+Col 13
+Character 7
+Numeric 4
+POSIXct 2
+
+%%%%%PICTURE SCREEENSHOT 10-37-29%%%%%
