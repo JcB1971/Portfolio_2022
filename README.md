@@ -105,6 +105,54 @@ This was remedied by averaging the lat and long values for the stations before m
 For this project I have chosen to use RStudio Desktop to prepare, clean, and analyze the data. 
 I later on used Tableau to create the visualizations. The data set was too large to be processed in spreadsheets and Rstudio Cloud.
 
+Install the appropriate packages:
+
+```diff
+install.packages("tidyverse") # Wrangle data
+install.packages("ggplot2") # plot graphs and vizs
+install.packages("tibble") # new version of the usual dataframe()
+install.packages("tidyr") # Organize data
+install.packages("readr") # import csv files
+install.packages("purr") # Enhances R Function Programmming
+install.pacakges("stringr") # Detext pattern of strings
+install.packages("forcats") # handle categorical variables
+install.packages("lubridate") # Wranle data attributes
+install.packages("skimr") # Get Summary Data
+install.packages("janitor") # Cleaning dirty data
+install.packages("dplyr") # to use the function mutate in the cleaning process
+library(tidyverse)
+library(ggplot2)
+library(tibble)
+library(tidyr)
+library(readr)
+library(purr)
+library(stringr)
+library(forcats)
+library(lubridate)
+library(skimr)
+library(janitor)
+library(dplyr)
+```
+Now we need to upload the files, we use the read_csv function:
+
+```diff
+getwd()
+
+Trips_Mar21 <- read_csv("202102-divvy-tripdata.csv", TRUE)
+Trips_Apr21 <- read_csv("202103-divvy-tripdata.csv", TRUE)
+Trips_May21 <- read_csv("202104-divvy-tripdata.csv", TRUE)
+Trips_Jun21 <- read_csv("202105-divvy-tripdata.csv", TRUE)
+Trips_Jul21 <- read_csv("202106-divvy-tripdata.csv", TRUE)
+Trips_Aug21 <- read_csv("202107-divvy-tripdata.csv", TRUE)
+Trips_Sep21 <- read_csv("202108-divvy-tripdata.csv", TRUE)
+Trips_Oct21 <- read_csv("202109-divvy-tripdata.csv", TRUE)
+Trips_Nov21 <- read_csv("202110-divvy-tripdata.csv", TRUE)
+Trips_Dec21 <- read_csv("202111-divvy-tripdata.csv", TRUE)
+Trips_Jan22 <- read_csv("202112-divvy-tripdata.csv", TRUE)
+Trips_Feb22 <- read_csv("202201-divvy-tripdata.csv", TRUE)
+```
+
+
 ### Review of the Data
 Data was reviewd to get an overall understanding of content of fields, data formats, and to ensure its integrity. The review of the data involved, checking column names across the 12 original files and checking for missing values, trailing white spaces, duplicate records, and other data anomalies.
 
@@ -123,6 +171,44 @@ Once the initial review was completed, all 12 files were loaded into one data fr
 
 https://github.com/JcB1971/Portfolio_2022/blob/main/Screenshot%20from%202022-03-08%2016-17-00.png
 
+First Problem: start and end_station_id to be modified to characters so they can stack correctly
+
+```diff
+Trips_Apr21 <- mutate(Trips_Apr21, end_station_id = as.character(end_station_id), start_station_id = as.character(start_station_id))
+Trips_May21 <- mutate(Trips_May21, end_station_id = as.character(end_station_id), start_station_id = as.character(start_station_id))
+Trips_Jun21 <- mutate(Trips_Jun21, end_station_id = as.character(end_station_id), start_station_id = as.character(start_station_id))
+Trips_Jul21 <- mutate(Trips_Jul21, end_station_id = as.character(end_station_id), start_station_id = as.character(start_station_id))
+Trips_Aug21 <- mutate(Trips_Aug21, end_station_id = as.character(end_station_id), start_station_id = as.character(start_station_id))
+Trips_Sep21 <- mutate(Trips_Sep21, end_station_id = as.character(end_station_id), start_station_id = as.character(start_station_id))
+Trips_Oct21 <- mutate(Trips_Oct21, end_station_id = as.character(end_station_id), start_station_id = as.character(start_station_id))
+Trips_Nov21 <- mutate(Trips_Nov21, end_station_id = as.character(end_station_id), start_station_id = as.character(start_station_id))
+Trips_Dec21 <- mutate(Trips_Dec21, end_station_id = as.character(end_station_id), start_station_id = as.character(start_station_id))
+Trips_Jan22 <- mutate(Trips_Jan22, end_station_id = as.character(end_station_id), start_station_id = as.character(start_station_id))
+Trips_Feb22 <- mutate(Trips_Feb22, end_station_id = as.character(end_station_id), start_station_id = as.character(start_station_id))
+```
+
+We can now bind all these df into one single df named all_trip
+
+```diff
+all_trips <- bind_rows(Trips_Mar21, Trips_Apr21, Trips_May21, Trips_Jun21, Trips_Jul21, Trips_Aug21, Trips_Sep21, Trips_Oct21, Trips_Nov21, Trips_Dec21, Trips_Jan22, Trips_Feb22)
+```
+
+Get Summary of data, check missing data
+```diifskim(all_trips)
+```
+
+
+```
+and add new columns: date, month, day, day, day of the week
+
+```diff
+all_trips$date <- as.Date(all_trips$start_time)  # The default format is yyyy-mm-dd
+all_trips$month <- format(as.Date(all_trips$date), "%m")
+all_trips$day <- format(as.Date(all_trips$date), "%d")
+all_trips$year <- format(as.Date(all_trips$date), "%Y")
+all_trips$day_of_week <- format(as.Date(all_trips$date), "%A")
+```
+
 ### Extraction of Data from Existing Fields
 To allow for more granular analysis of the data  and more insights, several new columns were created and populated with data from the started_at column of date and time. These new columns were day, month, year, time and day of the week.
 Another column was created to contain the trip duration (length of each trip). The data for this column was created by calculating the difference in time between the start and end time of the ride. Another version of this column was then created to contain the trip duration in minutes.
@@ -131,11 +217,28 @@ Rename Columns:
 
 https://github.com/JcB1971/Portfolio_2022/blob/main/Screenshot%20from%202022-03-08%2011-12-02.png
 
+```diff
+all_trips <- all_trips %>% rename(
+         trip_id= ride_id, 
+         ride_type= rideable_type, 
+         start_time= started_at, 
+         end_time= ended_at,
+         from_station_name= start_station_name,
+         from_station_id= start_station_id,
+         to_station_name= end_station_name,
+         to_station_id= end_station_id,
+         user_type= member_casual)
 
 Create Columns:
 
 https://github.com/JcB1971/Portfolio_2022/blob/main/Screenshot%20from%202022-03-08%2014-52-36.png
 
+column ride_length is an important parameter in this analysis
+
+```diff
+all_trips$ride_length <- difftime(all_trips$end_time, all_trips$start_time)
+
+```
 
 ### Data Cleaning
 Duplicate records (based on the RIDE ID field) were removed.
