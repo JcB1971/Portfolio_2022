@@ -287,7 +287,7 @@ Initially the data set contained 4,731,081 records. Once the data was cleaned, 4
 
 # 4. Analyse
 
-Once th edata was cleaned analysis of the data was undertaken in RStudio to determine the following:
+Once the data was cleaned analysis of the data was undertaken in RStudio to determine the following:
 
 - Mean, median, maximum, minimum ride duration (by rider type)
 - Average ride length by day and rider type
@@ -295,6 +295,26 @@ Once th edata was cleaned analysis of the data was undertaken in RStudio to dete
 - Count of trips by bicycle type
 - Count of the number of start stations
 
+Example for having the Count, Median, Mean (Average), and Max
+```diff
+> summary(all_trips_v2$ride_length)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+      0     403     717    1316    1303 3356649 
+```
+Another Example looking for mean
+
+```diff
+> mean(all_trips_v2$ride_length)
+[1] 1315.679
+```
+
+Example of min and max:
+```diff
+> min(all_trips_v2$ride_length)
+[1] 0
+> max(all_trips_v2$ride_length)
+[1] 3356649
+```
 The cleaned data set was used to create a .csv file that was exported from RStudio and imported into Tableau for further analysis.
 From there we will create visualizations.
 Tableau was used to further analyzing the data and determine:
