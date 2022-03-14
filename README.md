@@ -324,3 +324,21 @@ Tableau was used to further analyzing the data and determine:
 - Months of the year of the rides
 - Top 20 start stations by user type
 - Top 20 end stations by user type
+
+
+At some point at the Tableau Viz, I decided to remove some columns that are unnecessary and request more computing capacity:
+- trip_id
+- from_station_name
+- from_tation_id
+- to_station_name
+- to_station_id
+
+I created a new df that considers those changes, named all_trips_v3
+
+```diff
+all_trips_v3 <- all_trips_v2[ , ! names(all_trips_v2) %in% c("trip_id", "from_station_name", "from_station_id", "to_station_name","to_station_id")]
+```
+I saved the df cyclistic_data_light.csv
+```diff
+write.csv(all_trips_v3, "cyclistic_data_light.csv")
+```
