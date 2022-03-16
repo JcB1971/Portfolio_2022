@@ -328,15 +328,21 @@ Tableau was used to further analyzing the data and determine:
 
 At some point at the Tableau Viz, I decided to remove some columns that are unnecessary and request more computing capacity:
 - trip_id
-- from_station_name
 - from_tation_id
-- to_station_name
 - to_station_id
+
+While I will keep the
+- from_station_name
+- to_station_name
+
+and create a new column
+- trip_duration
+since I found out it would be interesting to analyse these parameters, and see eventually a patern between Members and Casual Riders.
 
 I created a new df that considers those changes, named all_trips_v3
 
 ```diff
-all_trips_v3 <- all_trips_v2[ , ! names(all_trips_v2) %in% c("trip_id", "from_station_name", "from_station_id", "to_station_name","to_station_id")]
+all_trips_v3 <- all_trips_v2[ , ! names(all_trips_v2) %in% c("trip_id", "from_station_id","to_station_id")]
 ```
 I saved the df cyclistic_data_light.csv
 ```diff
